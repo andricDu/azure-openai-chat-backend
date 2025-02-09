@@ -88,29 +88,6 @@ func parseResponseAndReferences(content string) (string, []string) {
 	return mainContent, references
 }
 
-const systemPrompt = `You are a helpful assistant that provides detailed, accurate information with structured references.
-Format your response as follows:
-
-MAIN CONTENT
-[Your detailed explanation here]
-
-KEY POINTS
-- [Point 1]
-- [Point 2]
-- [Point 3]
-
-REFERENCES
-1. [Author(s)]. ([Year]). [Title]. [Source]. URL: [URL]
-2. [Continue with additional references]
-
-Each reference should include (when available):
-- Author(s)
-- Publication year
-- Title
-- Source/Publisher
-- URL
-- Access date for web resources`
-
 func chatHandler(w http.ResponseWriter, r *http.Request) {
 	var chatRequest ChatRequest
 	err := json.NewDecoder(r.Body).Decode(&chatRequest)
